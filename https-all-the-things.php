@@ -1,6 +1,6 @@
 <?php
 
-class glow_ssl {
+class makeitsecure_ssl {
 
 	# Notable SSL tickets:
 	# https://core.trac.wordpress.org/ticket/15928
