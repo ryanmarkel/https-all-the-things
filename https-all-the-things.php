@@ -1,5 +1,15 @@
 <?php
 
+/**
+ * Plugin Name: HTTPS All the Things!
+ * Plugin URI: http://github.com/ryanmarkel/https-all-the-things/
+ * Description: Simple, zeroconf plugin that forces URLs to the current space in siteurl.
+ * Version: 1.0
+ * Author: Ryan Markel
+ * Author URI: http://ryanmarkel.com/
+ * License: GPL2
+ */
+
 class makeitsecure_ssl {
 
 	# Notable SSL tickets:
