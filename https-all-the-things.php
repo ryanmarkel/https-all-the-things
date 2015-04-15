@@ -5,7 +5,7 @@
  * Plugin URI: http://github.com/ryanmarkel/https-all-the-things/
  * Description: Simple, zeroconf plugin that forces URLs to the current space in siteurl.
  * Version: 1.0
- * Author: Ryan Markel
+ * Author: Ryan Markel, John Blackbourn
  * Author URI: http://ryanmarkel.com/
  * License: GPL2
  */
