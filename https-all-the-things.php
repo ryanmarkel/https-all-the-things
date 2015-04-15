@@ -102,26 +102,6 @@ class makeitsecure_ssl {
 	}
 
 	/**
-	 * Force the correct scheme on the front end via a redirect, if necessary. If we're on a public blog, force HTTP,
-	 * otherwise force HTTPS.
-	 *
-	 * @action init
-	 */
-	public function action_init() {
-
-		// No need for action if we're either using CLI or
-		// over HTTPS already
-		if ( is_ssl() || "cli" == php_sapi_name() ) {
-			return;
-		}
-
-		$url = set_url_scheme( self::current_url(), 'https' );
-		wp_redirect( $url, 301 );
-		exit;
-
-	}
-
-	/**
 	 * Get the current URL.
 	 *
 	 * @return string The current URL.
