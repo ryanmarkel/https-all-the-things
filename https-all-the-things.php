@@ -10,7 +10,7 @@
  * License: GPL2
  */
 
-class makeitsecure_ssl {
+class Https_All_The_Things {
 
 	# Notable SSL tickets:
 	# https://core.trac.wordpress.org/ticket/15928
@@ -120,7 +120,7 @@ class makeitsecure_ssl {
 		static $instance = false;
 
 		if ( ! $instance ) {
-			$instance = new makeitsecure_ssl;
+			$instance = new Https_All_The_Things;
 		}
 
 		return $instance;
@@ -129,4 +129,4 @@ class makeitsecure_ssl {
 
 }
 
-makeitsecure_ssl::init();
+Https_All_The_Things::init();
