@@ -20,7 +20,7 @@ class Https_All_The_Things {
 
 	public function __construct() {
 
-		add_action( 'init',                         array( $this, 'action_init' ), 99 );
+		// add_action( 'init',                         array( $this, 'action_init' ), 99 );
 
 		if ( !is_admin() ) {
 
@@ -39,6 +39,25 @@ class Https_All_The_Things {
 		add_filter( 'option_wpurl',          array( $this, 'enforce_admin_scheme' ) );
 		add_filter( 'wp_get_attachment_url', 'set_url_scheme', 1 );
 		add_filter( 'wp_insert_post_data',   array( $this, 'wp_insert_post_data_guid' ) );
+
+	}
+
+	/**
+	 * Force the correct scheme on the front end via a redirect, if necessary.
+	 *
+	 * @action init
+	 */
+	public function action_init() {
+
+		// No need for action if we're either using CLI or
+		// over HTTPS already
+		if ( is_ssl() || "cli" == php_sapi_name() ) {
+			return;
+		}
+
+		$url = set_url_scheme( self::current_url(), 'https' );
+		wp_redirect( $url, 301 );
+		exit;
 
 	}
 
