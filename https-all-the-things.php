@@ -39,6 +39,7 @@ class Https_All_The_Things {
 		add_filter( 'option_wpurl',          array( $this, 'enforce_admin_scheme' ) );
 		add_filter( 'wp_get_attachment_url', 'set_url_scheme', 1 );
 		add_filter( 'wp_insert_post_data',   array( $this, 'wp_insert_post_data_guid' ) );
+		add_filter( 'wp_calculate_image_srcset', array( $this, 'filter_image_srcset' ), 20 );
 
 	}
 
@@ -118,6 +119,17 @@ class Https_All_The_Things {
 			$data['guid'] = $this->enforce_home_scheme( $data['guid'] );
 		}
 		return $data;
+	}
+
+	/**
+	 * Ensure srcset URLs obey the protocol
+	 */
+	public function filter_image_srcset( $sources ) {
+		foreach ( $sources as $i => $source ) {
+			$sources[ $i ]['url'] = set_url_scheme( $sources[ $i ]['url'], 'https' );
+		}
+
+		return $sources;
 	}
 
 	/**
